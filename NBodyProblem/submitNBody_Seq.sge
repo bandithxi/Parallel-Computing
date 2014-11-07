@@ -1,0 +1,17 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 1
+#$ -N MPI_NBody
+#$ -q Common.q
+#$ -o MPI_NBody_Seq.txt
+#$ -e MPI_NBody_Seq.err
+
+echo "====== P: 1"
+for numbodies in {400..4000..400}
+do
+	echo "====== S: " $numbodies
+	for iter in {1..6}
+	do
+		/usr/lib64/openmpi/bin/mpirun -np $numprocs ./NBody_Sequential.out $numbodies 8760 0
+	done
+done
