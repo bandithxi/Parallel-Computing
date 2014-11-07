@@ -1,0 +1,20 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 20
+#$ -N Dynamic
+#$ -q Common.q
+#$ -o Dynamic.o
+#$ -e Dynamic.e
+#$ -M bandithxi@hotmail.com
+#$ -m e
+
+for i in {2..20..2}
+do
+	for j in {500..10000..500}
+	do
+		for k in {1..5..1}
+		do
+		/usr/lib64/openmpi/bin/mpirun -np $i ./PA02 $j $j
+		done
+	done
+done

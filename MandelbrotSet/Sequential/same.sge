@@ -1,0 +1,19 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe SharedMem 1
+#$ -N PA02
+#$ -q Common.q
+#$ -o sameq.o
+#$ -e sameq.e
+
+
+for i in $(seq 500 500 10000) 
+do
+      for j in {1..5..1}
+      do
+          /usr/lib64/openmpi/bin/mpirun ./PA02 $i $i
+      done
+done
+
+
+

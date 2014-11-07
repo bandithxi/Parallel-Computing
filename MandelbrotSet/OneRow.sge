@@ -1,0 +1,41 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 20
+#$ -N ReTest4
+#$ -q Common.q
+#$ -o Retest4.o
+#$ -e Retest4.e
+#$ -M bandithxi@hotmail.com
+#$ -m e
+
+for i in {1..1..1}
+do
+	for j in {500..10000..500}
+	do
+		for k in {1..4..1}
+		do
+		/usr/lib64/openmpi/bin/mpirun -np $i ./Sequential/PA02 $j $j
+		done
+	done
+done
+
+for i in {2..20..2}
+do
+	for j in {500..10000..500}
+	do
+		for k in {1..4..1}
+		do
+		/usr/lib64/openmpi/bin/mpirun -np $i ./Static2/PA02 $j $j
+		done
+	done
+done
+for i in {2..20..2}
+do
+	for j in {500..10000..500}
+	do
+		for k in {1..4..1}
+		do
+		/usr/lib64/openmpi/bin/mpirun -np $i ./Dynamic/PA02 $j $j
+		done
+	done
+done

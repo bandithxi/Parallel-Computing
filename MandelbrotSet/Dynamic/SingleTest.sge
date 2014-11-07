@@ -1,0 +1,12 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 20
+#$ -N DynamicSingleTest
+#$ -q Common.q
+#$ -o DSingleTest.o
+#$ -e DSingleTest.e
+
+for $i in {2..20..2}
+do
+     /usr/lib64/openmpi/bin/mpirun -np $i ./PA02 10000 10000
+done

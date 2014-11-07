@@ -1,0 +1,10 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 2
+#$ -N Dyn2ShrTst
+#$ -q Common.q
+#$ -o D2.o
+#$ -e D2.e
+
+
+/usr/lib64/openmpi/bin/mpirun -np $NSLOTS ./PA02A 500 500

@@ -1,0 +1,9 @@
+#!/bin/bash
+#$ -cwd
+#$ -pe orte 6
+#$ -N SingleTest
+#$ -q Common.q
+#$ -o SingleTest.o
+#$ -e SingleTest.e
+
+/usr/lib64/openmpi/bin/mpirun -np $NSLOTS ./PA02 10000 10000
